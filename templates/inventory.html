@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snack Overflow - Inventory</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="logo">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-carrot"></i>
+      </div>
+
+      <div class="logo-text">
+        <h1>Snack<br>Overflow</h1>
+        <span>v2.0</span>
+      </div>
+
+    </div>
+
+    <div class="section-title">Pantry</div>
+
+    <nav class="nav">
+
+      <a href="/" class="nav-item">
+        <i class="fa-solid fa-table-cells-large"></i>
+        Dashboard
+      </a>
+
+      <a href="inventory" class="nav-item active">
+        <i class="fa-solid fa-cube"></i>
+        Inventory
+      </a>
+
+      <a href="expiration" class="nav-item">
+        <i class="fa-regular fa-calendar"></i>
+        Expiration
+      </a>
+
+      <a href="grocery-runs" class="nav-item">
+        <i class="fa-solid fa-bag-shopping"></i>
+        Grocery Runs
+      </a>
+
+      <a href="recipes" class="nav-item">
+        <i class="fa-solid fa-chef-hat"></i>
+        Recipes
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        What Can I Make?
+      </a>
+
+      <a href="grocery-list" class="nav-item">
+        <i class="fa-solid fa-list-check"></i>
+        Grocery List
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-chart-column"></i>
+        Analytics
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-gear"></i>
+        Lookup Data
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-box">
+        <i class="fa-regular fa-window-maximize"></i>
+      </div>
+
+      <span>Snack Overflow 2.0</span>
+
+    </header>
+
+    <section class="content">
+
+      <h1 class="page-title">Inventory</h1>
+
+      <p class="subtitle">
+        Track everything in your pantry, fridge, and freezer.
+      </p>
+
+      <!-- SEARCH + BUTTON -->
+
+      <div class="action-row">
+
+        <div class="search-box">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search items by name..."
+          />
+
+          <button class="add-btn" class="search-btn">
+            Search
+          </button>
+
+        </div>
+
+        <button class="add-btn">
+          <i class="fa-solid fa-plus"></i>
+          Add item
+        </button>
+
+      </div>
+
+      <!-- EMPTY PANEL -->
+
+      <div class="empty-state">
+        No items yet. Click “Add item” to start tracking.
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

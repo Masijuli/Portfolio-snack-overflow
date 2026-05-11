@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Snack Overflow - Dashboard</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="logo">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-carrot"></i>
+      </div>
+
+      <div class="logo-text">
+        <h1>Snack<br>Overflow</h1>
+        <span>v2.0</span>
+      </div>
+
+    </div>
+
+    <div class="section-title">Pantry</div>
+
+    <nav class="nav">
+
+      <a href="dashboard.html" class="nav-item active">
+        <i class="fa-solid fa-table-cells-large"></i>
+        Dashboard
+      </a>
+
+      <a href="inventory" class="nav-item">
+        <i class="fa-solid fa-cube"></i>
+        Inventory
+      </a>
+
+      <a href="expiration" class="nav-item">
+        <i class="fa-regular fa-calendar"></i>
+        Expiration
+      </a>
+
+      <a href="grocery-runs" class="nav-item">
+        <i class="fa-solid fa-bag-shopping"></i>
+        Grocery Runs
+      </a>
+
+      <a href="recipes" class="nav-item">
+        <i class="fa-solid fa-chef-hat"></i>
+        Recipes
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        What Can I Make?
+      </a>
+
+      <a href="grocery-list" class="nav-item">
+        <i class="fa-solid fa-list-check"></i>
+        Grocery List
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-chart-column"></i>
+        Analytics
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-gear"></i>
+        Lookup Data
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-box">
+        <i class="fa-regular fa-window-maximize"></i>
+      </div>
+
+      <span>Snack Overflow 2.0</span>
+
+    </header>
+
+    <section class="content">
+
+      <h1 class="page-title">Dashboard</h1>
+
+      <p class="subtitle">
+        Pantry overview as of today.
+      </p>
+
+      <!-- STATS -->
+
+      <section class="stats">
+
+        <div class="card">
+
+          <div class="card-icon green">
+            <i class="fa-solid fa-cube"></i>
+          </div>
+
+          <div>
+            <h2 id="dashboard-inventory">0</h2>
+            <p>Inventory items</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-icon red">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+
+          <div>
+            <h2 id="dashboard-expired">0</h2>
+            <p>Expired</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-icon yellow">
+            <i class="fa-regular fa-calendar"></i>
+          </div>
+
+          <div>
+            <h2 id="dashboard-expiring-7">0</h2>
+            <p>Expiring ≤ 7 days</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-icon yellow">
+            <i class="fa-solid fa-list-check"></i>
+          </div>
+
+          <div>
+            <h2 id="dashboard-open">0</h2>
+            <p>Open list items</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-icon blue">
+            <i class="fa-solid fa-chef-hat"></i>
+          </div>
+
+          <div>
+            <h2 id="dashboard-recipes">0</h2>
+            <p>Recipes</p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ATTENTION PANEL -->
+
+      <section class="panel">
+
+        <h3>Needs attention</h3>
+
+        <div id="attention"></div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+</html>

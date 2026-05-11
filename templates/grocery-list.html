@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Snack Overflow - Grocery List</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="logo">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-carrot"></i>
+      </div>
+
+      <div class="logo-text">
+        <h1>Snack<br>Overflow</h1>
+        <span>v2.0</span>
+      </div>
+
+    </div>
+
+    <div class="section-title">Pantry</div>
+
+    <nav class="nav">
+
+      <a href="dashboard.html" class="nav-item">
+        <i class="fa-solid fa-table-cells-large"></i>
+        Dashboard
+      </a>
+
+      <a href="inventory.html" class="nav-item">
+        <i class="fa-solid fa-cube"></i>
+        Inventory
+      </a>
+
+      <a href="expiration.html" class="nav-item">
+        <i class="fa-regular fa-calendar"></i>
+        Expiration
+      </a>
+
+      <a href="grocery-runs.html" class="nav-item">
+        <i class="fa-solid fa-bag-shopping"></i>
+        Grocery Runs
+      </a>
+
+      <a href="recipes.html" class="nav-item">
+        <i class="fa-solid fa-chef-hat"></i>
+        Recipes
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        What Can I Make?
+      </a>
+
+      <a href="grocery-list.html" class="nav-item active">
+        <i class="fa-solid fa-list-check"></i>
+        Grocery List
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-chart-column"></i>
+        Analytics
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-gear"></i>
+        Lookup Data
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-box">
+        <i class="fa-regular fa-window-maximize"></i>
+      </div>
+
+      <span>Snack Overflow 2.0</span>
+
+    </header>
+
+    <section class="content">
+
+      <h1 class="page-title">Grocery List</h1>
+
+      <p class="subtitle">
+        Things to grab on your next run.
+      </p>
+
+      <!-- ACTION ROW -->
+
+      <div class="action-row grocery-top">
+
+        <div class="list-meta">
+          1 open · 0 purchased
+        </div>
+
+        <button class="add-btn">
+          <i class="fa-solid fa-plus"></i>
+          Add to list
+        </button>
+
+      </div>
+
+      <!-- TABLE CARD -->
+
+      <section class="grocery-card">
+
+        <h2 class="grocery-heading">Open</h2>
+
+        <!-- TABLE HEADER -->
+
+        <div class="grocery-table header">
+
+          <div></div>
+
+          <div>NAME</div>
+
+          <div>QTY</div>
+
+          <div>CATEGORY</div>
+
+          <div></div>
+
+        </div>
+
+        <!-- TABLE ROW -->
+
+        <div class="grocery-table row">
+
+          <div>
+            <button class="check-btn">
+              <i class="fa-solid fa-check"></i>
+            </button>
+          </div>
+
+          <div class="item-name">
+            TEST_E2E_Bread
+          </div>
+
+          <div>
+            1 pcs
+          </div>
+
+          <div>
+            —
+          </div>
+
+          <div class="delete-cell">
+            <button class="delete-btn">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
