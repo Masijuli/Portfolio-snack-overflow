@@ -50,19 +50,9 @@
         Expiration
       </a>
 
-      <a href="grocery-runs" class="nav-item">
-        <i class="fa-solid fa-bag-shopping"></i>
-        Grocery Runs
-      </a>
-
       <a href="recipes" class="nav-item">
         <i class="fa-solid fa-chef-hat"></i>
         Recipes
-      </a>
-
-      <a href="#" class="nav-item">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        What Can I Make?
       </a>
 
       <a href="grocery-list" class="nav-item">
@@ -73,11 +63,6 @@
       <a href="#" class="nav-item">
         <i class="fa-solid fa-chart-column"></i>
         Analytics
-      </a>
-
-      <a href="#" class="nav-item">
-        <i class="fa-solid fa-gear"></i>
-        Lookup Data
       </a>
 
     </nav>
@@ -134,14 +119,41 @@
       </div>
 
       <!-- EMPTY PANEL -->
+      <section class="panel">
+      <div id="inventory-list">
+        <table class="inventory-table">
 
-      <div class="empty-state">
-        No items yet. Click “Add item” to start tracking.
+          <thead>
+
+            <tr>
+
+              <th>Food</th>
+              <th>Quantity</th>
+              <th>Storage</th>
+              <th>Store</th>
+              <th>Purchased</th>
+              <th>Opened</th>
+              <th>Expires</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="inventory-table-body">
+
+            <!-- JS inserts rows here -->
+
+          </tbody>
+
+        </table>
       </div>
+      </section>
 
     </section>
 
   </main>
+
+  <script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
 
 </body>
 </html>

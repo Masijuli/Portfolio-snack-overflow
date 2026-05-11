@@ -1,35 +1,28 @@
 
-async function loadDashboard() {
+async function loadExpiration() {
     let container;
 
     let response = await fetch("/api/dashboard");
     let items = await response.json();
-    container = document.getElementById("dashboard-inventory");
-    container.innerHTML = `${items.inventory_count}`;
 
-    container = document.getElementById("dashboard-expired");
+    container = document.getElementById("expired");
     container.innerHTML = `${items.expired_count}`;
 
-    container = document.getElementById("dashboard-expiring-7");
+    container = document.getElementById("expiring-7");
     container.innerHTML = `${items.expiring_7_count}`;
-
-    container = document.getElementById("dashboard-open");
-    container.innerHTML = `${items.open_count}`;
-
-    container = document.getElementById("dashboard-recipes");
-    container.innerHTML = `${items.recipes_count}`;
 }
 
-async function loadAttetion() {
+async function loadExpiationLists() {
     let responseExpired = await fetch ("/api/expired-list");
     let itemsExpired = await responseExpired.json();
+    let containerExpired = document.getElementById("expired-list");
     let responseExpiring7 = await fetch ("/api/expiring-7-list");
     let itemsExpiring7 = await responseExpiring7.json();
-    let container = document.getElementById("attention");
+    let containerExpiring7 = document.getElementById("expiring-7-list");
 
-    if (itemsExpired.length == 0 && itemsExpiring7.length == 0) {
-        container.innerHTML = ` <p>
-                                    Nothing expiring soon. 🎉
+    if (itemsExpired.length == 0) {
+        containerExpired.innerHTML = ` <p>
+                                    Nothing expired. 🎉
                                 </p>`;
     } else {
         let inner = "<ul>"
@@ -42,6 +35,16 @@ async function loadAttetion() {
             });
             inner += `<li class="expired"><b>${i.name}</b> expired on <b>${dateFormatted}</b></li>`;
         }
+        inner += "</ul>";
+        containerExpired.innerHTML = inner;
+    }
+    
+    if (itemsExpiring7.length == 0) {
+        containerExpiring7.innerHTML = ` <p>
+                                    Nothing expiring soon. 🎉
+                                </p>`;
+    } else {
+        let inner = "<ul>"
         for (let i of itemsExpiring7) {
             let date = new Date(i.expiration);
             dateFormatted = date.toLocaleDateString("en-US", {
@@ -49,12 +52,12 @@ async function loadAttetion() {
                 day: "numeric",
                 year: "numeric"
             });
-            inner += `<li class="expiring7"><b>${i.name}</b> expires on <b>${dateFormatted}</b></li>`;
+            inner += `<li class="expiring7"><b>${i.name}</b> expiring on <b>${dateFormatted}</b></li>`;
         }
         inner += "</ul>";
-        container.innerHTML = inner;
+        containerExpiring7.innerHTML = inner;
     }
 }
 
-loadDashboard();
-loadAttetion();
+loadExpiration();
+loadExpiationLists();

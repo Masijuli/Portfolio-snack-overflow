@@ -28,60 +28,6 @@ def grocery_list():
     return render_template("grocery-list.html")
 
 
-# ------------------------
-# API ROUTES
-# ------------------------
-
-@app.route("/api/items", methods=["GET"])
-def get_items():
-
-    conn = get_connection()
-
-    with conn.cursor() as cur:
-        cur.execute("""
-            SELECT id, name, quantity
-            FROM inventory
-            ORDER BY id DESC
-        """)
-
-        rows = cur.fetchall()
-
-    conn.close()
-
-    items = []
-
-    for row in rows:
-        items.append({
-            "id": row[0],
-            "name": row[1],
-            "quantity": row[2]
-        })
-
-    return jsonify(items)
-
-
-@app.route("/api/items", methods=["POST"])
-def add_item():
-
-    data = request.json
-
-    name = data["name"]
-    quantity = data["quantity"]
-
-    conn = get_connection()
-
-    with conn.cursor() as cur:
-
-        cur.execute("""
-            INSERT INTO inventory (name, quantity)
-            VALUES (%s, %s)
-        """, (name, quantity))
-
-    conn.commit()
-    conn.close()
-
-    return jsonify({"message": "Item added"})
-
 
 
 # ------------------------
@@ -125,7 +71,7 @@ def get_dashboard():
 
         cur.execute("""
             SELECT COUNT(*)
-            FROM recipes
+            FROM recipe
         """)
         recipes_count = cur.fetchall()[0]
 
@@ -140,15 +86,16 @@ def get_dashboard():
     return jsonify(items)
 
 
-@app.route("/api/dashboard/expired-list", methods=["GET"])
+@app.route("/api/expired-list", methods=["GET"])
 def get_dashbaord_expired_list():
 
     conn = get_connection()
 
     with conn.cursor() as cur:
         cur.execute("""
-            SELECT food_name, expiration_date
-            FROM inventory
+            SELECT food.food_name, inventory.expiration_date
+            FROM inventory JOIN food
+                ON inventory.food_id = food.food_id
             WHERE expiration_date < CURRENT_DATE
             AND quantity > 0
         """)
@@ -168,15 +115,16 @@ def get_dashbaord_expired_list():
     return jsonify(items)
 
 
-@app.route("/api/dashboard/expiring-7-list", methods=["GET"])
+@app.route("/api/expiring-7-list", methods=["GET"])
 def get_dashbaord_expiring_7_list():
 
     conn = get_connection()
 
     with conn.cursor() as cur:
         cur.execute("""
-            SELECT food_name, expiration_date
-            FROM inventory
+            SELECT food.food_name, inventory.expiration_date
+            FROM inventory JOIN food
+                ON inventory.food_id = food.food_id
             WHERE expiration_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7 days'
             AND quantity > 0
         """)
@@ -195,7 +143,63 @@ def get_dashbaord_expiring_7_list():
 
     return jsonify(items)
 
+@app.route("/api/inventory", methods=["GET"])
+def get_inventory():
 
+    conn = get_connection()
+
+    with conn.cursor() as cur:
+        cur.execute("""
+            SELECT inventory.inventory_id, food.food_name, inventory.quantity, units.unit_name, storage.location, inventory.purchase_date, inventory.opened_date, inventory.expiration_date
+            FROM inventory JOIN food
+                ON inventory.food_id = food.food_id
+            JOIN storage
+                ON inventory.storage_id = storage.storage_id
+            JOIN units
+                ON inventory.unit_id = units.unit_id
+            WHERE inventory.quantity > 0
+            ORDER BY inventory.expiration_date DESC
+        """)
+
+        rows = cur.fetchall()
+
+    conn.close()
+
+    items = []
+
+    for row in rows:
+        items.append({
+            "inventory_id": row[0],
+            "name": row[1],
+            "quantity": row[2],
+            "unit": row[3],
+            "storage": row[4],
+            "purchase_date": row[5],
+            "opened_date": row[6],
+            "expiration_date": row[7]
+        })
+
+    return jsonify(items)
+
+@app.route("/api/inventory/<int:inventory_id>/open", methods=["POST"])
+def open_inventory_item(inventory_id):
+
+    conn = get_connection()
+
+    with conn.cursor() as cur:
+
+        cur.execute("""
+            UPDATE inventory
+            SET opened_date = CURRENT_DATE
+            WHERE inventory_id = %s
+        """, (inventory_id,))
+
+    conn.commit()
+    conn.close()
+
+    return jsonify({
+        "message": "Item opened"
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)
