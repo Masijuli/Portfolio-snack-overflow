@@ -150,13 +150,15 @@ def get_inventory():
 
     with conn.cursor() as cur:
         cur.execute("""
-            SELECT inventory.inventory_id, food.food_name, inventory.quantity, units.unit_name, storage.location, inventory.purchase_date, inventory.opened_date, inventory.expiration_date
+            SELECT inventory.inventory_id, food.food_name, inventory.quantity, units.unit_name, storage.location, grocery_runs.bought_date, inventory.opened_date, inventory.expiration_date
             FROM inventory JOIN food
                 ON inventory.food_id = food.food_id
             JOIN storage
                 ON inventory.storage_id = storage.storage_id
             JOIN units
                 ON inventory.unit_id = units.unit_id
+            JOIN grocery_runs
+                ON inventory.run_id = grocery_runs.run_id
             WHERE inventory.quantity > 0
             ORDER BY inventory.expiration_date DESC
         """)
