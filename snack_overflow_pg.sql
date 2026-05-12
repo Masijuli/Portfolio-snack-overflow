@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-
+  
 CREATE TABLE IF NOT EXISTS "grocery_stores" (
   "store_id" integer,
   "store_name" text,

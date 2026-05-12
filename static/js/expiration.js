@@ -22,8 +22,8 @@ async function loadExpiationLists() {
 
     if (itemsExpired.length == 0) {
         containerExpired.innerHTML = ` <p>
-                                    Nothing expired. 🎉
-                                </p>`;
+                                        Nothing expired. 🎉
+                                    </p>`;
     } else {
         let inner = "<ul>"
         for (let i of itemsExpired) {
@@ -33,7 +33,7 @@ async function loadExpiationLists() {
                 day: "numeric",
                 year: "numeric"
             });
-            inner += `<li class="expired"><b>${i.name}</b> expired on <b>${dateFormatted}</b></li>`;
+            inner += `<li class="expired"><b>${i.name}</b> expired on <b>${dateFormatted}</b> <button class="delete-btn" onclick="deleteInventory(${i.inventory_id})"><i class="fa-solid fa-trash"></i></button></li>`;
         }
         inner += "</ul>";
         containerExpired.innerHTML = inner;
@@ -57,6 +57,20 @@ async function loadExpiationLists() {
         inner += "</ul>";
         containerExpiring7.innerHTML = inner;
     }
+}
+
+async function deleteInventory(id) {
+
+    const confirmed = confirm("Delete this item?");
+
+    if (!confirmed) return;
+
+    await fetch(`/api/inventory/${id}`, {
+        method: "DELETE"
+    });
+
+    loadExpiration();
+    loadExpiationLists();
 }
 
 loadExpiration();

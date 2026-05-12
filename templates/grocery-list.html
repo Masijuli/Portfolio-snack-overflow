@@ -96,12 +96,12 @@
       <!-- ACTION ROW -->
 
       <div class="action-row grocery-top">
+        <form id="inventory-form">
+          <label>Select a List</label>
+          <select type="text" id="list_id" placeholder="Grocery Lists" required></select> <br>
+        </form>
 
-        <div class="list-meta">
-          1 open · 0 purchased
-        </div>
-
-        <button class="add-btn">
+        <button id="add-to-list-button" class="add-btn">
           <i class="fa-solid fa-plus"></i>
           Add to list
         </button>
@@ -110,61 +110,41 @@
 
       <!-- TABLE CARD -->
 
-      <section class="grocery-card">
+      <section class="panel">
 
         <h2 class="grocery-heading">Open</h2>
 
-        <!-- TABLE HEADER -->
+        <table class="inventory-table">
 
-        <div class="grocery-table header">
+          <thead>
 
-          <div></div>
+            <tr>
 
-          <div>NAME</div>
+              <th>Food</th>
+              <th>Notes</th>
+              <th>Quantity</th>
+              <th>Purchased?</th>
 
-          <div>QTY</div>
+            </tr>
 
-          <div>CATEGORY</div>
+          </thead>
 
-          <div></div>
+          <tbody id="grocery-table-body">
 
-        </div>
+            <!-- JS inserts rows here -->
 
-        <!-- TABLE ROW -->
+          </tbody>
 
-        <div class="grocery-table row">
-
-          <div>
-            <button class="check-btn">
-              <i class="fa-solid fa-check"></i>
-            </button>
-          </div>
-
-          <div class="item-name">
-            TEST_E2E_Bread
-          </div>
-
-          <div>
-            1 pcs
-          </div>
-
-          <div>
-            —
-          </div>
-
-          <div class="delete-cell">
-            <button class="delete-btn">
-              <i class="fa-regular fa-trash-can"></i>
-            </button>
-          </div>
-
-        </div>
+        </table>
 
       </section>
 
     </section>
 
   </main>
+
+  <script src="{{ url_for('static', filename='js/grocery-list.js') }}"></script>
+
 
 </body>
 </html>

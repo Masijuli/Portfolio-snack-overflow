@@ -105,13 +105,13 @@
             placeholder="Search items by name..."
           />
 
-          <button class="add-btn" class="search-btn">
+          <button id="search-button" class="add-btn search-btn">
             Search
           </button>
 
         </div>
 
-        <button class="add-btn">
+        <button id="add-item-btn" class="add-btn">
           <i class="fa-solid fa-plus"></i>
           Add item
         </button>
@@ -150,6 +150,41 @@
       </section>
 
     </section>
+
+    <div id="inventory-modal" class="modal hidden">
+
+    <div class="modal-content">
+
+      <h2>Add Inventory Item</h2>
+
+      <form id="inventory-form">
+
+        <label>Food</label>
+        <select type="text" id="food_id" placeholder="Food" required></select> <br>
+
+        <input type="number" id="quantity" placeholder="Quantity" required>
+        <select type="number" id="unit_id" placeholder="Unit" required></select> <br>
+
+        <label>Storage Location</label>
+        <select type="text" id="storage_id" placeholder="Storage"></select> <br>
+
+        <label>Store</label>
+        <select type="text" id="store_id" placeholder="Store"></select> <br>
+
+        <label>Expires</label>
+        <input type="date" id="expiration_date">
+
+        <button type="submit" class="add-btn">
+          Save Item
+        </button>
+
+      </form>
+
+      <button id="close-modal" class="close-btn">Close</button>
+
+    </div>
+
+</div>
 
   </main>
 

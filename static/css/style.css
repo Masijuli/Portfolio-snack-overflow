@@ -647,3 +647,145 @@ body{
     padding:0 14px 14px 14px;
   }
 }
+
+
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  background:rgba(0,0,0,0.45);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal.hidden{
+  display:none;
+}
+
+.modal-content{
+  background:white;
+  padding:28px;
+  border-radius:24px;
+
+  width:420px;
+
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.modal-content input{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:15px;
+}
+
+.close-btn{
+  background:#e5e5e5;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.expired-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.delete-btn {
+    background: #ef4444;
+    border: none;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* MODAL FORM LAYOUT */
+
+#inventory-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* LABELS */
+
+#inventory-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: -4px;
+}
+
+/* INPUTS + SELECTS */
+
+#inventory-form input,
+#inventory-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: white;
+    font-size: 14px;
+    color: #111827;
+    transition: all 0.2s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* FOCUS STATE */
+
+#inventory-form input:focus,
+#inventory-form select:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+/* SELECT CUSTOM ARROW */
+
+#inventory-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%236b7280' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+
+    padding-right: 42px;
+}
+
+/* SAVE BUTTON SPACING */
+
+#inventory-form .add-btn {
+    margin-top: 8px;
+    width: 100%;
+}
+
+/* CLOSE BUTTON */
+
+.close-btn {
+    margin-top: 12px;
+    width: 100%;
+}
+
