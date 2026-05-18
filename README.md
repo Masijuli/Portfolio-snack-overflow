@@ -82,6 +82,12 @@ The system updates the database dynamically as users interact with the applicati
 
 ---
 
+### Connection to the Common Good
+
+Snack Overflow supports the common good by helping users better manage household food resources and reduce food waste. By tracking inventory, expiration dates, and grocery usage, the project encourages more sustainable consumption habits and promotes efficient food management within households.
+
+---
+
 ## My Contributions
 
 My contributions to this project included:
